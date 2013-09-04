@@ -1,24 +1,30 @@
 package GeometricObjects;
+
+
+import Material.Material;
+import Utility.HitRecord;
+import Utility.Ray;
+
 /**
  * Abstract class for Objects. Each derived class needs at least an intersection method and an associated material
  * @author manzi
  *
  */
-import javax.vecmath.Point3d;
-
-import Material.Material;
-import Utility.HitPoint;
-import Utility.Ray;
-
 public abstract class GeometricObject {
 
 	Material mat;
+	final static float kEpsilon = 0.0001f; //this factor prevents self-shadowing artefacts
 	
 	public GeometricObject(Material mat){
 		this.mat = mat;
 	}
 	
-	public abstract HitPoint hit(Ray ray);
+	/**
+	 * Intersection Method. Checks if and where a ray intersects with the object
+	 * @param ray
+	 * @return A HitRecord Object that records relevant information
+	 */
+	public abstract HitRecord hit(Ray ray);
 
 	
 	public Material getMaterial() {

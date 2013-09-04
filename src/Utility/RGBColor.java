@@ -23,9 +23,17 @@ public class RGBColor {
 		this.b = b;
 	}
 	
-	public void attenuate(float a){
-		r*=a;
-		g*=a;
-		b*=a;
+	public void mult(float a){
+		r*=a; g*=a; b*=a;
 	}
+	
+	public void mult(RGBColor c){
+		r*=c.r; g*=c.g; b*=c.b;
+	}
+	
+	public void add(RGBColor c){
+		r+=c.r; g+=c.g; b+=c.b;
+	}
+	
+
 }

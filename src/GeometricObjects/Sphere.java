@@ -4,15 +4,14 @@ import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
 import Material.Material;
-import Utility.HitPoint;
-import Utility.RGBColor;
+import Utility.HitRecord;
 import Utility.Ray;
 
 public class Sphere extends GeometricObject{
 
 	public Point3f center;
 	private float radius;
-	static float kEpsilon = 0.0001f;
+
 	
 	
 	public Sphere(Material mat, Point3f center, float radius){
@@ -23,12 +22,12 @@ public class Sphere extends GeometricObject{
 	
 	
 	@Override
-	public HitPoint hit(Ray ray) {
+	public HitRecord hit(Ray ray) {
 		float t;
 		Point3f position = new Point3f();
 		Vector3f normal = new Vector3f(); 
 		Vector3f temp= new Vector3f(ray.origin); 
-		HitPoint hit = new HitPoint();
+		HitRecord hit = new HitRecord();
 		temp.sub(center);
 		
 		float a = ray.direction.dot(ray.direction);
@@ -58,7 +57,9 @@ public class Sphere extends GeometricObject{
 				//store HitRecord
 				hit.recordHit(this, ray, normal, position, t);
 				return hit;
-			}else{
+			}
+			//compute bigger root
+			else{
 				t = (-b+e) / denom;
 				//compute normal
 				normal.set(ray.direction);
@@ -73,11 +74,7 @@ public class Sphere extends GeometricObject{
 				//store HitRecord
 				hit.recordHit(this, ray, normal, position, t);
 				return hit;
-			}
-				
-				
+			}			
 		}
 	}
-	
-
 }

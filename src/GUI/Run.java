@@ -11,12 +11,12 @@ public class Run{
 	 * TODO args should encode the dimension of the image
 	 */
 	public static void main(String[] args) {
-		int width =1200;
-		int height = 1200;
+		int width = 1000;
+		int height = 1000;
 		String title = "Simple Ray Tracer";
 		
 		//call the raytracer
-		World myWorld = new World(width, height);
+		World myWorld = new TestScene(width, height);
 		RGBColor[][] rendered_image = myWorld.render_scene();
 		
 		//setup the gui

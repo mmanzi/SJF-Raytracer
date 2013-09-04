@@ -27,9 +27,13 @@ public class GUI extends JFrame{
 	    //write image data into bufferedImage
 	    BufferedImage bufferedImg = new BufferedImage(w,h,BufferedImage.TYPE_3BYTE_BGR);
 	    for(int i=0; i<w; i++)
-	    	for(int j=0; j<h; j++)
-	    		bufferedImg.setRGB(i,j,new Color((int)(255*img[i][j].r),(int)(255*img[i][j].g),(int)(255*img[i][j].b)).getRGB());
-	    
+	    	for(int j=0; j<h; j++){
+	    		//conversion from float RGB to int value in range [0,255] required. For now clamp vlaues that are too high!
+	    		Color pix_color = new Color((int)(255*Math.min(1,img[i][j].r)),
+	    									(int)(255*Math.min(1,img[i][j].g)),
+	    									(int)(255*Math.min(1,img[i][j].b)));
+	    		bufferedImg.setRGB(i,j,pix_color.getRGB());
+	    	}
 	    //add bufferedImage to JFrame
 	    ImageIcon ic = new ImageIcon(bufferedImg);
 	    JLabel jp = new JLabel(ic);

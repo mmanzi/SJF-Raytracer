@@ -1,71 +1,60 @@
 package World;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import Camera.*;
+import GeometricObjects.*;
+import Light.*;
+import Tracers.*;
+import Utility.*;
+
 /**
  * Representation of the scene. The whole scene setup (eg. camera setup, geometry, lightsources is defined here)
  * @author manzi
  *
  */
-import java.util.Iterator;
-import java.util.LinkedList;
-
-import GeometricObjects.*;
-import Material.Material;
-import Material.Matte;
-import Tracers.Tracer;
-import Utility.*;
-
-import javax.vecmath.*;
-
-import Utility.Ray;
-
-public class World {
+public abstract class World {
 
 	int hres;
 	int vres;
 	RGBColor background_color;
 	Tracer rt;
 	LinkedList<GeometricObject> objects;
-	ViewPlane vp;
+	LinkedList<Light> lights;
+	Camera camera;
+	
+	protected abstract void build();
 	
 	public World(int w, int h){
 		objects = new LinkedList<GeometricObject>();
+		lights = new LinkedList<Light>();
 		this.vres=w;
 		this.hres=h;
 		build();
 	}
 	
-	
-	private void build(){
-		background_color = new RGBColor(0.f,0.f,0.5f);
-		rt = new Tracer(this);
-		
-		Material redMat = new Matte(new RGBColor(1.f,0.f,0.f));
-		Sphere redSphere = new Sphere(redMat, new Point3f(0.f,80.f,-50f), 150f);
-		objects.add(redSphere);
-		
-		Material greenMat = new Matte(new RGBColor(0.f,1.f,0.f));
-		Sphere greenSphere = new Sphere(greenMat, new Point3f(0.f,-80.f,-6f), 150f);
-		objects.add(greenSphere);
-	}
-	
-	
+	/**
+	 * calls the user-defined camera to render the scene using the user-defined tracer 
+	 * @return the rendered image
+	 */
 	public RGBColor[][] render_scene(){
 		RGBColor[][] img = new RGBColor[hres][vres];
-		Ray ray = new Ray();
-		
-		ray.direction = new Vector3f(0.f,0.f,-1.f);
-		for(int x=0; x<hres; x++) //left-right 
-			for(int y=0; y<vres; y++){ //top-bottom (or bottom-up?)
-				ray.origin = new Point3f(y-vres/2.f + 0.5f, x-hres/2.f+0.5f, 100); //orthographic projection!!!
-				img[x][y] = rt.trace(ray);			
-			}
+		if(camera!=null)
+			return camera.renderScene(img, rt);
 		return img;
 	}
 
-	
+	/**
+	 * getter functions for different world content
+	 */
 	public Iterator<GeometricObject> getObjectIterator(){
 		return objects.iterator();
 	}
 	
+	public Iterator<Light> getLightIterator(){
+		return lights.iterator();
+	}
 	
 	public RGBColor getBackgroundColor(){
 		return background_color;

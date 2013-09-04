@@ -1,10 +1,10 @@
 package Material;
 
-import Utility.HitPoint;
+import Light.Light;
+import Utility.HitRecord;
 import Utility.RGBColor;
 
 public abstract class Material {
 
-	
-	public abstract RGBColor shade(HitPoint hit); 
+	public abstract RGBColor shade(HitRecord hit, Light l); 
 }
