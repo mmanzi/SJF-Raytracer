@@ -32,6 +32,7 @@ public class HitRecord {
 	public RGBColor shade(Light l){
 		return obj.getMaterial().shade(this, l);
 	}
+	
 	public boolean anyHit() {
 		return anyHit;
 	}

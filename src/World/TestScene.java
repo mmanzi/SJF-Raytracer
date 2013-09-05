@@ -25,15 +25,15 @@ public class TestScene extends World{
 		rt = new MultipleObjects(this);
 		
 		//Add Objects
-		Material redMat = new Matte(new RGBColor(0.8f,0.2f,0.2f));
+		Material redMat = new Diffuse(new RGBColor(0.8f,0.2f,0.2f));
 		Sphere redSphere = new Sphere(redMat, new Point3f(0.5f,0.f,-3.f), 0.3f);
 		objects.add(redSphere);
 		
-		Material greenMat = new Matte(new RGBColor(0.2f,0.8f,0.2f));
+		Material greenMat = new Diffuse(new RGBColor(0.2f,0.8f,0.2f));
 		Sphere greenSphere = new Sphere(greenMat, new Point3f(-0.2f,-0.2f,-2.f), 0.2f);
 		objects.add(greenSphere);
 		
-		Material greyMat = new Matte(new RGBColor(0.5f, 0.5f, 0.5f));
+		Material greyMat = new Diffuse(new RGBColor(0.5f, 0.5f, 0.5f));
 		Plane greyPlane = new Plane(greyMat, new Point3f(0.f,-0.5f,0.f), new Vector3f(0.f, 1.f, 0.f));
 		objects.add(greyPlane);
 		

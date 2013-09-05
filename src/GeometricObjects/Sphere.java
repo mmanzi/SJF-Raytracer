@@ -12,15 +12,12 @@ public class Sphere extends GeometricObject{
 	public Point3f center;
 	private float radius;
 
-	
-	
 	public Sphere(Material mat, Point3f center, float radius){
 		super(mat);
 		this.center = center;
 		this.radius = radius;
 	}
-	
-	
+		
 	@Override
 	public HitRecord hit(Ray ray) {
 		float t;
