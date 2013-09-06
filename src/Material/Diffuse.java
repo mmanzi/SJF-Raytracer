@@ -32,7 +32,7 @@ public  class Diffuse extends Material{
 		inc.negate();
 		//dot product of light-direction and surface normal
 		float a = Math. max(0.f, inc.dot(hit.getNormal()));
-		//attenuation with 1/distÂ²
+		//attenuation with 1/dist²
 		a /= attenuation;
 		shadedColor.mult(a);
 		//multiply with lights color

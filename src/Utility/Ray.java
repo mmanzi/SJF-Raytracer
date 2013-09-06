@@ -10,19 +10,25 @@ public class Ray {
 	public Point3f origin;
 	public Vector3f direction;
 	
-	//default constructor
+	/**
+	 * default constructor
+	 */
 	public Ray(){
 		this.origin = new Point3f(0.f,0.f,0.f);
 		this.direction = new Vector3f(0.f,0.f,0.f);
 	}
 	
-	//constructor
+	/**
+	 * constructor
+	 */
 	public Ray(Point3f o, Vector3f d){
 		this.origin = o;
 		this.direction = d;
 	}
 	
-	//copy constructor
+	/**
+	 * copy constructor
+	 */
 	public Ray(Ray charles){
 		this.origin = charles.origin;
 		this.direction = charles.direction;

@@ -18,16 +18,16 @@ public class MultipleObjects extends Tracer{
 	/**
 	 * This simple tracer iterates over all objects and light sources
 	 * @param ray: The ray that is traced
-	 * @return The shading color of the closest intersection
+	 * @return The shading color of the closest intersection (if there was any) 
 	 */
 	public RGBColor trace(Ray ray){
-		//find closest hit
+		//tracing
 		HitRecord hit = new HitRecord();
 		Iterator<GeometricObject> objItr= world_ptr.getObjectIterator();	
 		while(objItr.hasNext()){
-			HitRecord new_hitp = objItr.next().hit(ray);
-			if(hit.getHitDist()>new_hitp.getHitDist()) 
-				hit = new_hitp;
+			HitRecord new_hit = objItr.next().hit(ray);
+			if(hit.getHitDist()>new_hit.getHitDist()) 
+				hit = new_hit;
 		}		
 		//shading
 		if(hit.anyHit()){

@@ -12,18 +12,19 @@ import Utility.RGBColor;
  */
 public abstract class Camera {
 
-	Point3f eye;
-	Point3f lookat;
-	Vector3f up;
-	float scale;
+	Point3f eye;	//eye: not used now
+	Point3f lookat;	//lookat point: not used now
+	Vector3f up;	//up vector: not used now
+	int hres, vres; 
 	
 	Vector3f x, y, z;
 	
-	public Camera(Point3f eye, Point3f lookat, Vector3f up, float scale){
+	public Camera(Point3f eye, Point3f lookat, Vector3f up, int hres, int vres){
 		this.eye = eye;
 		this.lookat = lookat;
 		this.up = up;
-		this.scale = scale;
+		this.hres = hres;
+		this.vres = vres;
 		x = new Vector3f();
 		y = new Vector3f();
 		z = new Vector3f();

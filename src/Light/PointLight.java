@@ -16,12 +16,14 @@ public class PointLight extends Light{
 		this.position = position;
 		this.color = color;
 	}
+	
 	@Override
 	public Vector3f getIncomingRay(Point3f p) {
 		Vector3f inc = new Vector3f(p);
 		inc.sub(position);
 		return inc;
 	}
+	
 	@Override
 	public RGBColor getColor() {
 		return color;

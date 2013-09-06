@@ -12,22 +12,25 @@ import Utility.Ray;
  */
 public class PinholeCamera extends Camera{
 
-	public PinholeCamera(Point3f eye, Point3f lookat, Vector3f up, float scale) {
-		super(eye, lookat, up, scale);
+	public PinholeCamera(Point3f eye, Point3f lookat, Vector3f up, int hres, int vres) {
+		super(eye, lookat, up, hres, vres);
 	}
 
 	@Override
 	public RGBColor[][] renderScene(RGBColor[][] img, Tracer rt) {
-		int hres = img.length;
-		int vres = img[0].length;
 		Ray ray = new Ray();		
 		for(int x=0; x<hres; x++) 
 			for(int y=0; y<vres; y++){
-				ray.origin.set(eye);
-				ray.direction = new Vector3f(eye.x + ((x+0.5f)/hres - 0.5f)*scale, eye.y - ((y+0.5f)/vres - 0.5f)*scale, -1);
-				ray.direction.sub(eye);
+				ray = generateRay(x,y);			
 				img[x][y] = rt.trace(ray);
 			}
 		return img;
+	}
+	
+	private Ray generateRay(int x, int y){
+		Ray ray = new Ray();
+		ray.origin = new Point3f(0.f,0.f,0.f);
+		ray.direction = new Vector3f((x+0.5f)/hres - 0.5f, -(y+0.5f)/vres + 0.5f, -1);
+		return ray;
 	}
 }

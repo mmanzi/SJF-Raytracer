@@ -7,10 +7,9 @@ public class Run{
 
 	/**
 	 * The main class of the raytracer.
-	 * @param args 
-	 * TODO args should encode the dimension of the image
 	 */
 	public static void main(String[] args) {
+		
 		int width = 1000;
 		int height = 1000;
 		String title = "Simple Ray Tracer";

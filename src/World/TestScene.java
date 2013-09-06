@@ -9,7 +9,11 @@ import Material.*;
 import Utility.*;
 import Camera.*;
 import Tracers.*;
-
+/**
+ * A simple test scene
+ * @author mmanzi
+ *
+ */
 public class TestScene extends World{
 
 	public TestScene(int w, int h) {
@@ -17,14 +21,20 @@ public class TestScene extends World{
 	}
 	
 	protected void build(){
+		//define camera
 		camera = new PinholeCamera(new Point3f(0.f, 0.f, 0.f), 		// eye
-										new Point3f(0.f,0.f,-1.f),  // lookat
+										new Point3f(0.f,0.f,-1.f),  // look-at
 										new Vector3f(1.f,0.f,0.f),	//up
-										1.f); 						//scale
+										hres,						//horizontal resolution
+										vres); 						//vertical resolution
+		
+		//define background color
 		background_color = new RGBColor(0.1f,0.1f,0.1f);
+		
+		//define used ray tracer
 		rt = new MultipleObjects(this);
 		
-		//Add Objects
+		//Add objects
 		Material redMat = new Diffuse(new RGBColor(0.8f,0.2f,0.2f));
 		Sphere redSphere = new Sphere(redMat, new Point3f(0.5f,0.f,-3.f), 0.3f);
 		objects.add(redSphere);
@@ -37,7 +47,7 @@ public class TestScene extends World{
 		Plane greyPlane = new Plane(greyMat, new Point3f(0.f,-0.5f,0.f), new Vector3f(0.f, 1.f, 0.f));
 		objects.add(greyPlane);
 		
-		//Add Lightsource
+		//Add light sources
 		Light yellowLight = new PointLight(new Point3f(0.5f,0.5f,-1.5f), new RGBColor(1.f,1.f,0.1f));
 		lights.add(yellowLight);
 		
