@@ -7,6 +7,7 @@ import World.World;
  * The abstract class for Tracer. Tracer subclasses need to implement a trace method that returns a RGB Color
  * @author manzi
  */
+
 public abstract class Tracer {
 
 	protected World world_ptr;

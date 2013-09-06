@@ -16,11 +16,13 @@ import Tracers.*;
  */
 public class TestScene extends World{
 
-	public TestScene(int w, int h) {
-		super(w, h);
-	}
 	
 	protected void build(){
+		
+		//define image resolution
+		hres = 1000;
+		vres = 1000;
+		
 		//define camera
 		camera = new PinholeCamera(new Point3f(0.f, 0.f, 0.f), 		// eye
 										new Point3f(0.f,0.f,-1.f),  // look-at

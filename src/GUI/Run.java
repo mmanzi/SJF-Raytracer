@@ -8,20 +8,12 @@ public class Run{
 	/**
 	 * The main class of the raytracer.
 	 */
+	
 	public static void main(String[] args) {
-		
-		int width = 1000;
-		int height = 1000;
-		String title = "Simple Ray Tracer";
-		
-		//call the raytracer
-		World myWorld = new TestScene(width, height);
+		World myWorld = new TestScene();
 		RGBColor[][] rendered_image = myWorld.render_scene();
-		
-		//setup the gui
-		GUI gui = new GUI(width, height, title, rendered_image);
-		gui.setVisible(true);
-		
-		//TODO: the image should be stored somewhere 
+		new GUI(rendered_image);
 	}
+	
+	
 }

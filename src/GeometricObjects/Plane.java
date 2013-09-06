@@ -31,7 +31,7 @@ public class Plane extends GeometricObject{
 		float dirDotN = temp.dot(normal);
 		float t = origDotN / dirDotN;
 		
-		if (t>kEpsilon){
+		if (t>tmin){
 			//ray.origin + t*ray.direction
 			Point3f hitpos = new Point3f(ray.direction);
 			hitpos.scale(t);

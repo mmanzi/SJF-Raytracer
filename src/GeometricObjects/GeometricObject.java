@@ -13,7 +13,8 @@ import Utility.Ray;
 public abstract class GeometricObject {
 
 	Material mat;
-	final static float kEpsilon = 0.0001f; //this factor prevents self-shadowing artefacts
+	final protected float tmin = 0.00001f;
+	
 	
 	public GeometricObject(Material mat){
 		this.mat = mat;

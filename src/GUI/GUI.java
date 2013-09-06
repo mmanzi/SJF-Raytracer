@@ -16,10 +16,13 @@ public class GUI extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 
-	public GUI(int w, int h, String title, RGBColor[][] img){
+	public GUI(RGBColor[][] img){
 
+		int w = img.length;
+		int h = img[1].length;
+		
 		//setup frame
-		setTitle(title);
+		setTitle("Raytracer");
 		setSize(w,h);
 		setLocationRelativeTo(null);
 	    setDefaultCloseOperation(EXIT_ON_CLOSE);      
@@ -38,6 +41,8 @@ public class GUI extends JFrame{
 	    ImageIcon ic = new ImageIcon(bufferedImg);
 	    JLabel jp = new JLabel(ic);
 	    add(jp);
+	    
+	    this.setVisible(true);
 	}
 
 }

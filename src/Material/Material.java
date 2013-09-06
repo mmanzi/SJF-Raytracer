@@ -8,6 +8,7 @@ import Utility.RGBColor;
  * @author mmanzi
  *
  */
+
 public abstract class Material {
 
 	public abstract RGBColor shade(HitRecord hit, Light l); 

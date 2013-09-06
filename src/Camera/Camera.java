@@ -12,13 +12,16 @@ import Utility.RGBColor;
  */
 public abstract class Camera {
 
+	public abstract RGBColor[][] renderScene(RGBColor[][] img, Tracer rt);
+
+
+	
 	Point3f eye;	//eye: not used now
 	Point3f lookat;	//lookat point: not used now
 	Vector3f up;	//up vector: not used now
 	int hres, vres; 
 	
 	Vector3f x, y, z;
-	
 	public Camera(Point3f eye, Point3f lookat, Vector3f up, int hres, int vres){
 		this.eye = eye;
 		this.lookat = lookat;
@@ -31,18 +34,12 @@ public abstract class Camera {
 		setupCoordSystem();
 	}
 
+	
+	
 	private void setupCoordSystem(){
-		//setup z axis
-		z.set(eye);
-		z.sub(lookat);
-		z.normalize();
-		//setup x axis
-		x.cross(up, z);
-		x.normalize();
-		//setup y axis
-		y.cross(z, x);
+		//dummy
 	}
 	
-	public abstract RGBColor[][] renderScene(RGBColor[][] img, Tracer rt);
+	
 	
 }

@@ -33,11 +33,9 @@ public abstract class World {
 	 * constructor, called by main-method in Run. 
 	 * Note that only the resolution must be passed, all the rest is done in the build() method
 	 */
-	public World(int w, int h){
+	public World(){
 		objects = new LinkedList<GeometricObject>();
 		lights = new LinkedList<Light>();
-		this.vres=w;
-		this.hres=h;
 		build();
 	}
 	

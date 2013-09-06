@@ -40,7 +40,7 @@ public class Sphere extends GeometricObject{
 			
 			//compute smaller root
 			t = (-b-e) / denom;			
-			if(t>kEpsilon){
+			if(t>tmin){
 				//compute normal
 				normal.set(ray.direction);
 				normal.scale(t);

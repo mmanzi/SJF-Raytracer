@@ -17,6 +17,8 @@ public class PinholeCamera extends Camera{
 	}
 
 	@Override
+	
+	
 	public RGBColor[][] renderScene(RGBColor[][] img, Tracer rt) {
 		Ray ray = new Ray();		
 		for(int x=0; x<hres; x++) 
